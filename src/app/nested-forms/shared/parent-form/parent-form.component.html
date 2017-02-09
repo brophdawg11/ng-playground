@@ -25,8 +25,12 @@
         Submit
     </button>
 
-    <button routerLink="/nested-form" routerLinkActive="active">
-        Cancel
-    </button>
-
 </form>
+
+<div class="parent-form-state">
+
+    <p>Current parentForm State:</p>
+
+    <pre>{{ parentData | json }}</pre>
+
+</div>

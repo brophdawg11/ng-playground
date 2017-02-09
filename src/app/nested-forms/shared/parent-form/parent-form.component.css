@@ -1,7 +1,17 @@
 .parent-form {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
     border: 1px solid black;
     margin-bottom: 20px;
     padding: 20px;
+}
+
+.parent-form-state {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding: 10px;
 }
 
 input {

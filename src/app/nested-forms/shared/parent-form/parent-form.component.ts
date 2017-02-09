@@ -35,7 +35,13 @@ export class ParentFormComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.parentForm.valueChanges
-            .subscribe(value => console.log('Parent Form changed', value));
+            .subscribe(value => {
+                console.log('Parent Form changed', value);
+                this.parentData = _.mergeWith(this.parentData,
+                                              value,
+                                              this.mergeCustomizer);
+
+            });
     }
 
     private getParentData(): ParentData {
@@ -67,29 +73,29 @@ export class ParentFormComponent implements OnInit, AfterViewInit {
         return formGroup;
     }
 
+    // _.mergeWith customizer to avoid merging primitive arrays, and only
+    // merge object arrays
+    private mergeCustomizer = (objValue, srcValue) => {
+        if (_.isArray(objValue)) {
+            if (_.isPlainObject(objValue[0]) || _.isPlainObject(srcValue[0])) {
+                return srcValue.map(src => {
+                    const obj = _.find(objValue, { id: src.id });
+                    return _.mergeWith(obj || {}, src, this.mergeCustomizer);
+                });
+            }
+            return srcValue;
+        }
+    }
+
     onSubmit() {
         if (!this.parentForm.valid) {
             console.error('PArent Form invalid, preventing submission');
             return false;
         }
 
-        // _.mergeWith customizer to avoid merging primitive arrays, and only
-        // merge object arrays
-        function customizer(objValue, srcValue) {
-            if (_.isArray(objValue)) {
-                if (_.isPlainObject(objValue[0]) || _.isPlainObject(srcValue[0])) {
-                    return srcValue.map(src => {
-                        const obj = _.find(objValue, { id: src.id });
-                        return _.mergeWith(obj || {}, src,  customizer);
-                    });
-                }
-                return srcValue;
-            }
-        }
-
         const updatedParentData = _.mergeWith(this.parentData,
                                               this.parentForm.value,
-                                              customizer);
+                                              this.mergeCustomizer);
 
         console.log('Submitting...');
         console.log('Original parentData', this.initialState);
@@ -97,4 +103,5 @@ export class ParentFormComponent implements OnInit, AfterViewInit {
 
         return false;
     }
+
 }
