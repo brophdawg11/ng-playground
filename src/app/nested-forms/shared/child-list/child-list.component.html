@@ -1,0 +1,29 @@
+<h3>
+    Children
+</h3>
+
+<div class="child-list"
+     [formGroup]="parentForm">
+
+    <div formArrayName="children">
+
+        <div *ngFor="let child of children; let idx=index ">
+
+            Child {{child.id}}
+
+            (<a href="" (click)="removeChild(idx)">Remove</a>)
+
+            <app-child-form
+                [parentForm]="parentForm"
+                [child]="child">
+            </app-child-form>
+
+        </div>
+
+        <a href="" (click)="addChild()">
+            Add Child
+        </a>
+
+    </div>
+
+</div>

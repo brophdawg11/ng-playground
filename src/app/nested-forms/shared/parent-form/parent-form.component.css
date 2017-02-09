@@ -1,0 +1,10 @@
+.parent-form {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+input {
+    width: 30%;
+    min-width: 200px;
+}
