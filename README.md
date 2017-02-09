@@ -1,5 +1,10 @@
 # NgPlayground
 
+A collection of little Angular2 experiments, demos, etc.
+
+* Nested Reactive Forms | [Blog Post](http://brophy.org/post/nested-reactive-forms-in-angular2/) | [Demo](https://brophdawg11.github.io/ng-playground/nested-form)
+
+## Angular-CLI
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 
 ## Development server
