@@ -89,7 +89,7 @@ export class ParentFormComponent implements OnInit, AfterViewInit {
 
     onSubmit() {
         if (!this.parentForm.valid) {
-            console.error('PArent Form invalid, preventing submission');
+            console.error('Parent Form invalid, preventing submission');
             return false;
         }
 

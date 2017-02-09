@@ -9,8 +9,8 @@ import { ChildData } from '../interfaces';
     styleUrls: [ './child-form.component.css' ]
 })
 export class ChildFormComponent implements OnInit {
-    @Input('parentForm')
-    public parentForm: FormGroup;
+    @Input('children')
+    public children: FormArray;
 
     @Input('child')
     public child: ChildData;
@@ -22,7 +22,7 @@ export class ChildFormComponent implements OnInit {
     ngOnInit() {
         console.log('Initializing child form', this.child);
         this.childForm = this.toFormGroup(this.child);
-        (<FormArray>this.parentForm.get('children')).push(this.childForm);
+        this.children.push(this.childForm);
     }
 
     private toFormGroup(data: ChildData) {

@@ -14,7 +14,7 @@
             (<a href="" (click)="removeChild(idx)">Remove</a>)
 
             <app-child-form
-                [parentForm]="parentForm"
+                [children]="parentForm.controls.children"
                 [child]="child">
             </app-child-form>
 
