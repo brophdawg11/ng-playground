@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 
 import { ChildData } from '../interfaces';
@@ -15,7 +15,7 @@ export class ChildListComponent implements OnInit {
     @Input('children')
     public children: ChildData[];
 
-    constructor() { }
+    constructor(private cd: ChangeDetectorRef) { }
 
     ngOnInit() {
         console.log('Initializing child list', this.children);
@@ -25,12 +25,13 @@ export class ChildListComponent implements OnInit {
     addChild() {
         const child: ChildData = {
             id: Math.floor(Math.random() * 100),
-            childField1: 'Child Field 1 Value',
-            childField2: 'Child Field 2 Value',
-            childHiddenField1: 'Child Hidden Field 1 value'
+            childField1: '',
+            childField2: '',
+            childHiddenField1: ''
         };
 
         this.children.push(child);
+        this.cd.detectChanges();
         return false;
     }
 
