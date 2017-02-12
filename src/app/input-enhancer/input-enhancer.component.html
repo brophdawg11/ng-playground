@@ -1,0 +1,27 @@
+<h1>Input Enhancer</h1>
+
+<form [formGroup]="formGroup"
+      (onSubmit)="onSubmit()">
+
+    <app-ng-input-enhancer
+        [class.ng-disable-styles]="true"
+        data-id="name"
+        label="Name"
+        [control]="formGroup.controls.name">
+
+        <input id="name"
+               class="ng-disable-input-styles"
+               formControlName="name" />
+
+    </app-ng-input-enhancer>
+
+    <button type="submit">Submit</button>
+</form>
+
+<div>
+    <p>Current form state:</p>
+    <pre>{{ this.formGroup.value | json }}</pre>
+    <p>Current name errors:</p>
+    <pre>{{ this.formGroup.controls.name.errors | json }}</pre>
+    <p>Touched: {{this.formGroup.controls.name.touched }}</p>
+</div>

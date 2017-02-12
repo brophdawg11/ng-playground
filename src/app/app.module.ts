@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { InputEnhancerModule } from './input-enhancer/input-enhancer.module';
 import { NestedFormsModule } from './nested-forms/nested-forms.module';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NestedFormsModule } from './nested-forms/nested-forms.module';
         RouterModule,
 
         // Local modules
+        InputEnhancerModule,
         NestedFormsModule,
 
         // AppRoutingModule should always be last
