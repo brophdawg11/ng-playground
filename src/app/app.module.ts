@@ -22,6 +22,8 @@ import { NestedFormsModule } from './nested-forms/nested-forms.module';
 
         // Local modules
         NestedFormsModule,
+
+        // AppRoutingModule should always be last
         AppRoutingModule
     ],
     providers: [],
